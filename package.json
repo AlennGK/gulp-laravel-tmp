@@ -1,0 +1,28 @@
+{
+  "name": "dev",
+  "version": "0.1.0",
+  "description": "gulp-laravel-tmp",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gulp",
+    "template",
+    "laravel"
+  ],
+  "author": "AlennGK",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.12.8",
+    "gulp": "^3.9.1",
+    "gulp-changed": "^1.3.0",
+    "gulp-clean-css": "^2.0.8",
+    "gulp-concat": "^2.6.0",
+    "gulp-jshint": "^2.0.1",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^2.3.1",
+    "gulp-uglify": "^1.5.3",
+    "jshint": "^2.9.2"
+  }
+}
