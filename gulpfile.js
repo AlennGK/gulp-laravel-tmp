@@ -1,93 +1,119 @@
-var gulp 			= require('gulp'),
-	plumber 		= require('gulp-plumber'),
-	sass 			= require('gulp-sass'),
-	jshint			= require('gulp-jshint'),
-	concat			= require('gulp-concat'),
-	changed 		= require('gulp-changed'),
-	browserSync 	= require('browser-sync'),
-	reload			= browserSync.reload,
-	cleanCSS 		= require('gulp-clean-css'),
-	uglify 			= require('gulp-uglify');
+var watchify      = require('watchify');
+var browserify    = require('browserify');
+var gulp          = require('gulp');
+var source        = require('vinyl-source-stream');
+var buffer        = require('vinyl-buffer');
+var gutil         = require('gulp-util');
+var babelify      = require('babelify');
+var uglify        = require('gulp-uglify');
+var sourcemaps    = require('gulp-sourcemaps');
+var assign        = require('lodash.assign');
+var browserSync   = require('browser-sync');
+var sass          = require('gulp-sass');
+var autoprefixer  = require('gulp-autoprefixer');
+var react         = require('react');
+var gulpif        = require('gulp-if');
 
-var SRC 			= 'resources/**/app.*',
-	DEST 			= 'public';
+// setup node enviorment (development or production)
+var env = process.env.NODE_ENV;
 
+// ////////////////////////////////////////////////
+// Javascript Browserify, Watchify, Babel, React
+// https://github.com/gulpjs/gulp/blob/master/docs/recipes/fast-browserify-builds-with-watchify.md
+// ////////////////////////////////////////////////
 
+// add custom browserify options here
+var customOpts = {
+  entries: ['./src/js/index.js'],
+  debug: true,
+};
+var opts = assign({}, watchify.args, customOpts);
+var b = watchify(browserify(opts));
 
-// --------------------
-// Tasks
-// --------------------
-gulp.task('dev', ['styles', 'script']);
-gulp.task('script', ['jshint', 'concat']);
-gulp.task('default', ['dev', 'server']);
+// add transformations here
+b.transform('babelify', { presets: ['es2015', 'react'] });
 
-gulp.task('production', ['miniCss', 'uglify']);
+gulp.task('js', bundle); // so you can run `gulp js` to build the file
+b.on('update', bundle); // on any dep update, runs the bundler
+b.on('log', gutil.log); // output build logs to terminal
 
-// --------------------
-// Defaut
-// --------------------
-// Styles
-gulp.task('styles', function() {
-	console.log('|1/4|► ' + ' Compiling & serving STYLE files ←---');
-	return  gulp.src('resources/*.scss')
-	.pipe(sass())
-	.pipe(gulp.dest(DEST));
+function bundle() {
+  return b.bundle()
+
+    // log errors if they happen
+    .on('error', gutil.log.bind(gutil, gutil.colors.red(
+       '\n\n*********************************** \n' +
+      'BROWSERIFY ERROR:' +
+      '\n*********************************** \n\n'
+      )))
+    .pipe(source('main.js'))
+
+    // optional, remove if you don't need to buffer file contents
+    .pipe(buffer())
+    .pipe(gulpif(env === 'production', uglify()))
+
+    // optional, remove if you dont want sourcemaps
+    .pipe(sourcemaps.init({ loadMaps: true })) // loads map from browserify file
+    // Add transformation tasks to the pipeline here.
+    // writes .map file
+    .pipe(gulpif(env === 'development', sourcemaps.write('../maps')))
+    .pipe(gulp.dest('./public/js'))
+    .pipe(browserSync.reload({ stream: true }));
+}
+
+// ////////////////////////////////////////////////
+// Browser-Sync Tasks
+// ////////////////////////////////////////////////
+
+gulp.task('browserSync', function () {
+  browserSync({
+    server: {
+      baseDir: './public/',
+    },
+  });
 });
 
-// Scripts
-gulp.task('jshint', function() {
-	console.log('|2/4|► ' + ' Checking all JS files ←---');
-	return  gulp.src('resources/js/*.js')
-	.pipe(plumber())
-	.pipe(jshint())
-	.pipe(jshint.reporter('default'));
+// ////////////////////////////////////////////////
+// HTML Tasks
+// ////////////////////////////////////////////////
+
+gulp.task('html', function () {
+  return gulp.src('public/**/*.html')
+    .pipe(browserSync.reload({ stream: true }));
 });
 
-gulp.task('concat', function() {
-	console.log('|3/4|► ' + ' Compiling SCRIPT files ←---');
-	return gulp.src('resources/assets/**/**/*.js')
-	.pipe(plumber())
-	.pipe(concat('App.js'))
-	.pipe(gulp.dest('public'))
-	.pipe(gulp.dest('resources'));
+// ////////////////////////////////////////////////
+// Styles Tasks
+// ///////////////////////////////////////////////
+
+gulp.task('styles', function () {
+  gulp.src('src/scss/style.scss')
+    .pipe(sourcemaps.init())
+
+      // scss output compressed if production or expanded if development
+      .pipe(gulpif(env === 'production', sass({ outputStyle: 'compressed' }),
+        sass({ outputStyle: 'expanded' })))
+      .on('error', gutil.log.bind(gutil, gutil.colors.red(
+         '\n\n*********************************** \n' +
+        'SASS ERROR:' +
+        '\n*********************************** \n\n'
+        )))
+      .pipe(autoprefixer({
+        browsers: ['last 3 versions'],
+        cascade: false,
+      }))
+    .pipe(gulpif(env === 'development', sourcemaps.write('../maps')))
+.pipe(gulp.dest('public/css'))
+.pipe(browserSync.reload({ stream: true }));
 });
 
-// --------------------
-// Server
-// --------------------
-gulp.task('server', function() {
-	console.log('|4/4|► ' + ' Watching files & syncing browser ←---');
-	browserSync.init({
-		server: DEST
-	});
-	gulp.watch("resources/**", ['dev']);
-	gulp.watch("resources/**").on('change', reload);
+// ////////////////////////////////////////////////
+// Watch Tasks
+// ////////////////////////////////////////////////
+
+gulp.task('watch', function () {
+  gulp.watch('public/**/*.html', ['html']);
+  gulp.watch('src/scss/**/*.scss', ['styles']);
 });
 
-// --------------------
-// Production
-// --------------------
-gulp.task('miniCss', function() {
-	console.log('|1/2|► ' + ' Compressing CSS ←---');
-	return gulp.src('public/*.css')
-	.pipe(plumber())
-	.pipe(cleanCSS({
-		keepSpecialComments: 1
-	}))
-	.pipe(gulp.dest(DEST));
-});
-
-gulp.task('uglify', function() {
-	console.log('|2/2|► ' + ' Compressing SCRIPTS ←---');
-	return gulp.src('public/*.js')
-	.pipe(plumber())
-	.pipe(uglify())
-	.pipe(gulp.dest(DEST));
-});
-
-
-
-
-
-
-
+gulp.task('default', ['js', 'styles', 'browserSync', 'watch']);

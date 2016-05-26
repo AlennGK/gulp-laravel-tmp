@@ -10,6 +10,9 @@
 
 ### About
 - This is my personal template for easy use in every project.
+- New branch
+- Replaced with (Joel Longie)[https://www.youtube.com/channel/UCRvSlROmtxXhPPfXf0n5Mow]
+- Added React
 
 ---
 #### Alenn
