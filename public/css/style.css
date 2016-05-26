@@ -1,0 +1,581 @@
+/*! normalize.css v3.0.1 | MIT License | git.io/normalize */
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic");
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+  display: block;
+}
+
+audio, canvas, progress, video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+[hidden], template {
+  display: none;
+}
+
+a {
+  background: 0 0;
+}
+
+a:active, a:hover {
+  outline: 0;
+}
+
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+b, strong {
+  font-weight: 700;
+}
+
+dfn {
+  font-style: italic;
+}
+
+h1 {
+  font-size: 2em;
+  margin: .67em 0;
+}
+
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -.5em;
+}
+
+sub {
+  bottom: -.25em;
+}
+
+img {
+  border: 0;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+figure {
+  margin: 1em 40px;
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+}
+
+pre {
+  overflow: auto;
+}
+
+code, kbd, pre, samp {
+  font-family: monospace,monospace;
+  font-size: 1em;
+}
+
+button, input, optgroup, select, textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+button {
+  overflow: visible;
+}
+
+button, select {
+  text-transform: none;
+}
+
+button, html input[type=button], input[type=reset], input[type=submit] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+button[disabled], html input[disabled] {
+  cursor: default;
+}
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+input {
+  line-height: normal;
+}
+
+input[type=checkbox], input[type=radio] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+input[type=search] {
+  -webkit-appearance: textfield;
+  box-sizing: content-box;
+}
+
+input[type=search]::-webkit-search-cancel-button, input[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+fieldset {
+  border: 1px solid silver;
+  margin: 0 2px;
+  padding: .35em .625em .75em;
+}
+
+legend {
+  border: 0;
+  padding: 0;
+}
+
+textarea {
+  overflow: auto;
+}
+
+optgroup {
+  font-weight: 700;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td, th {
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  color: #333333;
+  margin: 0;
+  padding: 0;
+  background: #333;
+  font-weight: 300;
+  font-family: "Roboto", sans-serif;
+}
+
+@media (min-width: 768px) {
+  body {
+    background: #f2f2f2;
+  }
+}
+
+hr {
+  border: solid #DDDDDD;
+  border-width: 1px 0 0;
+  clear: both;
+  height: 0;
+  margin: 40px 0;
+}
+
+.container {
+  max-width: 90%;
+  margin: 0px auto;
+}
+
+.row {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin: 0 0 0px;
+}
+
+.row > * {
+  background: #F4F3F0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin: 0 10px;
+}
+
+.test {
+  background: #e9ff6a;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 1em;
+}
+
+a, a:visited {
+  text-decoration: none;
+  color: #5bc0de;
+  transition: all 0.5s ease-in-out;
+}
+
+a:hover, a:active, a:focus {
+  color: #2390b0;
+  transition: all 0.5s ease-in-out;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  line-height: 1em;
+  clear: both;
+  letter-spacing: -.5px;
+  text-align: center;
+  font-weight: 400;
+}
+
+h1 {
+  letter-spacing: -1px;
+  font-weight: 900;
+}
+
+p {
+  margin-bottom: 1.5em;
+  font-size: 14px;
+  line-height: 1.6em;
+}
+
+img {
+  height: auto;
+  /* Make sure images are scaled correctly. */
+  max-width: 100%;
+  /* Adhere to container width. */
+}
+
+ul li {
+  list-style: inside;
+}
+
+button {
+  font-size: 100%;
+  /* Corrects font size not being inherited in all browsers */
+  margin: 0;
+  /* Addresses margins set differently in IE6/7, F3/4, S5, Chrome */
+  vertical-align: baseline;
+  /* Improves appearance and consistency in all browsers */
+}
+
+.button, button, input[type="submit"], input[type="button"], input[type="reset"] {
+  display: inline-block;
+  position: relative;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: normal;
+  border: 0 none;
+  margin: 0 2px;
+  font-size: 14px;
+  transition: background-color 0.3s ease-in-out;
+  font-weight: 300;
+  font-family: "Roboto", sans-serif;
+  text-transform: capitalize;
+}
+
+.button, button, button a, input[type="submit"], input[type="button"], input[type="reset"] {
+  background: #5bc0de;
+  color: #fff !important;
+}
+
+.button:hover, button:hover, button a:hover, input[type="submit"]:hover, input[type="button"]:hover, input[type="reset"]:hover {
+  background: #31b0d5;
+}
+
+input[type="submit"] {
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
+
+input[type=submit][disabled=disabled], button[disabled=disabled], a.disabled, .button.disabled, button.disabled {
+  background: #5bc0de;
+  color: #fff !important;
+  opacity: 0.6;
+  cursor: default;
+  pointer-events: none;
+}
+
+.img-button {
+  border: none;
+  padding: 0;
+  vertical-align: middle;
+  vertical-align: -moz-middle-with-baseline;
+  vertical-align: -webkit-baseline-middle;
+}
+
+input.button {
+  padding: 10px !important;
+}
+
+.button, button, input[type="submit"] {
+  background: #5bc0de;
+  color: #fff !important;
+}
+
+.button.expanded {
+  width: 100%;
+  max-width: 100%;
+}
+
+ul.button-group {
+  padding-left: 0;
+}
+
+ul.button-group li {
+  list-style: none;
+  display: table-cell;
+}
+
+ul.button-group li a {
+  border-left: 1px solid;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.button.info, button.info {
+  padding-bottom: 8px;
+}
+
+.success {
+  background: #5cb85c;
+}
+
+.success:hover {
+  background: #3d8b3d;
+}
+
+.info {
+  background: #5bc0de;
+}
+
+.info:hover {
+  background: #28a1c5;
+}
+
+.warning {
+  background: #f0ad4e;
+}
+
+.warning:hover {
+  background: #df8a13;
+}
+
+.danger {
+  background: #d9534f;
+}
+
+.danger:hover {
+  background: #b52b27;
+}
+
+table {
+  width: 100%;
+  max-width: 100%;
+  text-align: left;
+}
+
+table td, table th {
+  border: 1px solid #ddd;
+  padding: 7px 20px;
+}
+
+table th {
+  background: #ebebeb;
+}
+
+table td {
+  font-size: .9em;
+}
+
+table td:hover {
+  background: #ebebeb;
+  transition: all 0.3s ease-in-out;
+}
+
+table.table-striped tr:nth-child(even) {
+  background: #f2f2f2;
+}
+
+.table-responsive {
+  min-height: .01%;
+  overflow-x: auto;
+}
+
+.table-responsive td {
+  white-space: nowrap;
+}
+
+input,
+select,
+textarea {
+  font-size: 100%;
+  /* Corrects font size not being inherited in all browsers */
+  margin: 0;
+  /* Addresses margins set differently in IE6/7, F3/4, S5, Chrome */
+  vertical-align: baseline;
+  /* Improves appearance and consistency in all browsers */
+}
+
+input[type="search"] {
+  width: calc(100% - 16px) !important;
+}
+
+input[type="text"], input[type="password"], input[type="date"], input[type="email"], input[type="search"], input[type="url"], select, textarea {
+  width: 100%;
+  max-width: 100%;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="email"]:focus, input[type="search"]:focus, input[type="url"]:focus, select:focus, textarea:focus {
+  border-color: #66afe9;
+  outline: 0;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+input[type="range"] {
+  width: 100%;
+  max-width: 100%;
+}
+
+textarea {
+  overflow: auto;
+  /* Removes default vertical scrollbar in IE6/7/8/9 */
+  padding-left: 3px;
+  vertical-align: top;
+  /* Improves readability and alignment in all browsers */
+}
+
+label {
+  color: #333333;
+  padding-right: 10px;
+}
+
+input, textarea {
+  border: 1px solid #DDDDDD;
+  color: #7F7F7F;
+  font-family: sans-serif;
+  font-size: 14px;
+  line-height: 1;
+  margin: 2px 6px 12px 0;
+  padding: 8px;
+}
+
+select {
+  border: 1px solid #DDDDDD;
+  color: #7F7F7F;
+  font-size: 14px;
+  margin-bottom: 20px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+input[type="color"] {
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  padding: 0;
+  /* Addresses excess padding in IE8/9 */
+}
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* Addresses appearance set to searchfield in S5, Chrome */
+  /* Addresses box sizing set to border-box in S5, Chrome (include -moz to future-proof) */
+  box-sizing: content-box;
+}
+
+input[type="search"]::-webkit-search-decoration {
+  /* Corrects inner padding displayed oddly in S5, Chrome on OSX */
+  -webkit-appearance: none;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  /* Corrects inner padding and border displayed oddly in FF3/4 www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/ */
+  border: 0;
+  padding: 0;
+}
+
+code, kbd, pre, samp {
+  font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+  font-size: 90%;
+}
+
+code {
+  background: #f2f2f2;
+  padding: 2px;
+}
+
+pre {
+  background: #f2f2f2;
+  padding: 20px;
+}
+
+.panel {
+  padding: 20px 40px;
+  margin: 20px;
+  background: #f2f2f2;
+}
+
+.panel.success, .panel.info, .panel.warning, .panel.danger {
+  color: #fff;
+}
+
+.panel.success {
+  background: #5cb85c;
+}
+
+.panel.info {
+  background: #5bc0de;
+}
+
+.panel.warning {
+  background: #f0ad4e;
+}
+
+.panel.danger {
+  background: #d9534f;
+}

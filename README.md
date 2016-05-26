@@ -1,4 +1,5 @@
 ## Template: GULP + LARAVEL
+- Testing WorkSpace
 - CSS
 - Java
 - Broserfy sync
@@ -11,7 +12,7 @@
 ### About
 - This is my personal template for easy use in every project.
 - New branch
-- Replaced with (Joel Longie)[https://www.youtube.com/channel/UCRvSlROmtxXhPPfXf0n5Mow]
+- Replaced with [Joel Longie](https://www.youtube.com/channel/UCRvSlROmtxXhPPfXf0n5Mow)
 - Added React
 
 ---
